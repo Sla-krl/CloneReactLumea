@@ -233,7 +233,7 @@ export default function Cadastro() {
                                             {/* <p className="secao_produtos">Tônico Facial</p> */}
                                         </td>
                                         <td data-cell="Categoria: ">{sk.categorias.map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(", ")}</td>
-                                        <td className="secao_descricao" data-cell="Descrição: ">{sk.descricao || "Não informada"}</td>
+                                        <td className="secao_descricao texto_descricao" data-cell="Descrição: ">{sk.descricao || "Não informada"}</td>
                                         <td data-cell="Valor: ">{formatoServices.PrecoBR(sk.preco)}</td>
                                         <td>
                                             <svg onClick={() => abrirModalParaConfirmarDelete(sk.id!)} xmlns="http://www.w3.org/2000/svg"

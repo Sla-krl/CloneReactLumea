@@ -3,6 +3,11 @@ import './Header.css'
 import { Nav, Navbar } from 'react-bootstrap';
 import { useState } from 'react';
 import lumea_logo from '../../assets/img/lumea_logo_branca.png'
+import LinkCategoria from '../LinkCategoria/LinkCategoria';
+import { categorias } from '../../data/LinkCategoria';
+import type { LinkCategoriaProps } from '../../types/LinkCategoriaProps';
+import { categoriasDireita } from '../../data/LinkCategoriaDireita';
+import type { LinkCategoriaDireitaProps } from '../../types/LinkCategoriaDireitaProps';
 
 export default function Header() {
     const [pesquisa, setPesquisa] = useState<string>("");
@@ -58,20 +63,15 @@ export default function Header() {
 
                             <Nav.Item>
                                 <nav className="container_esquerda container_palavras" id="container_esquerda">
-                                    <Link to={"/produtos/promocoes"}>
-                                        <a href="">Promoções</a>
-                                    </Link>
-
-                                    <Link to={"/produtos/presentes"}>
-                                        <a href="">Presentes</a>
-                                    </Link>
-                                    <Link to={"/produtos/maquiagem"}>
-                                        <a href="">Maquiagem</a>
-                                    </Link>
-
-                                    <Link to={"/produtos/corpo-e-banho"}>
-                                        <a href="">Corpo & Banho</a>
-                                    </Link>
+                                    {
+                                        categorias.map((c: LinkCategoriaProps) => (
+                                            <LinkCategoria
+                                                key={c.titulo}
+                                                rota={c.rota}
+                                                titulo={c.titulo}
+                                            />
+                                        ))
+                                    }
                                 </nav>
                             </Nav.Item>
                         </div>
@@ -94,19 +94,15 @@ export default function Header() {
 
                             <Nav.Item>
                                 <nav className="container_direita container_palavras" id="container_direita">
-                                    <Link to={"/produtos/fragrancia"}>
-                                        <a href="">Fragrâncias</a>
-                                    </Link>
-                                    <Link to={"/produtos/cabelo"}>
-                                        <a href="">Cabelo</a>
-                                    </Link>
-
-                                    <Link to={"produtos/homem"}>
-                                        <a href="">Homem</a>
-                                    </Link>
-                                    <Link to={"/produtos/a-marca"}>
-                                        <a href="">A Marca</a>
-                                    </Link>
+                                    {
+                                        categoriasDireita.map((c: LinkCategoriaDireitaProps) => (
+                                            <LinkCategoria
+                                                key={c.titulo}
+                                                rota={c.rota}
+                                                titulo={c.titulo}
+                                            />
+                                        ))
+                                    }
                                 </nav>
                             </Nav.Item>
                         </div>

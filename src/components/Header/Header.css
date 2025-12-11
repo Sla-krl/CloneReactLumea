@@ -97,9 +97,9 @@ nav a {
     display: flex;
 }
 
-/* .navbar-toggler-icon .icone_user{
-    display: none;
-} */
+.ms-auto {
+    background-color: #FFF;
+}
 
 @media screen and (max-width: 1178px) {
     .container_direita {

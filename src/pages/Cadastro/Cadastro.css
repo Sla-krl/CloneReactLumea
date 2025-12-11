@@ -156,9 +156,14 @@ td {
     font-size: 20px;
 }
 
-secao_descrição {
+/* .texto_descricao {
     font-family: "Darker Grotesque", sans-serif;
-}
+    font-size: 24px;
+} */
+
+/* .secao_descricao text {
+    font-family: "Darker Grotesque", sans-serif;
+} */
 
 table svg {
     width: 30px;

@@ -5,12 +5,14 @@ import type { SkinCare } from '../../types/SkinCare'
 import CardProduto from '../../components/CardProduto/CardProduto'
 import Carrossel from '../../components/Carrossel/Carrossel'
 import Header from '../../components/Header/Header'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
 
 export default function Produtos() {
     const [skinCare, setSkinCare] = useState<SkinCare[]>([]);
     const location = useLocation();
+    const { categorias } = useParams<{ categorias: string }>();
+
 
     const parametrosPesquisados = new URLSearchParams(location.search);
     const termo_pesquisado = parametrosPesquisados.get('query');
@@ -19,7 +21,11 @@ export default function Produtos() {
         try {
             const dados = await getSkinCare();
             // console.log("Lista de Produtos vinda da API: ", dados);
-            if (termo_pesquisado) {
+            if (categorias) {
+                const dados_filtrados = dados.filter(sk => sk.categorias.some(cat => cat.toLowerCase() === categorias.toLowerCase()))
+                setSkinCare(dados_filtrados);
+            }
+            else if (termo_pesquisado) {
                 const dados_filtrados = dados.filter(sk =>
                     sk.nome.toLowerCase().includes(termo_pesquisado.toLowerCase()) ||
                     sk.descricao.toLowerCase().includes(termo_pesquisado.toLowerCase()) ||
@@ -49,6 +55,11 @@ export default function Produtos() {
                     <span>
                         {
                             termo_pesquisado ? `Resultados para: ${termo_pesquisado}` : "Skin Care"
+                            // categorias
+                            // ? categorias.charAt(0).toUpperCase() + categorias.slice(1).toLowerCase()
+                            // : termo_pesquisado
+                            // ? `Resultados para: "${termo_pesquisado}"`
+                            // : "Nenhum filtro aplicado"
                         }
                     </span>
                     < hr />
