@@ -11,8 +11,15 @@ export default function Footer() {
                 </div>
 
                 <div className="redes_sociais">
-                    <img className="whatsapp" src={whatsapp} alt="icone do whatsapp" />
-                    <img className="insta" src={insta} alt="icone do instagram" />
+                    <a href="https://wa.me/5511912345678" target="_blank">
+                        <img className='whatsapp' src={whatsapp} alt="Fale conosco no WhatsApp" />
+                    </a>
+
+                    <a href="www.instagram.com" target="_blank">
+                        <img src={insta} alt="Visite nosso Instagram" />
+                    </a>
+
+                    {/* <img className="insta" src={insta} alt="icone do instagram" /> */}
                 </div>
 
             </section>

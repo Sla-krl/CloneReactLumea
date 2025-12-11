@@ -76,7 +76,7 @@ export default function Header() {
                             </Nav.Item>
                         </div>
 
-                        <Link to={"/produtos"}>
+                        <Link to={"/"}>
                             <img className="lumea_logo" src={lumea_logo} alt="Logo" />
                         </Link>
 
